@@ -20,7 +20,7 @@ public struct ButtonsResultBuilder {
                 }) {
                     part.label
                         .padding(17)
-                        .background(colorScheme == .light ? Color.white: Color(UIColor.systemGray6))
+                        .modifier(DialogModifier())
                         .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                         .padding(.bottom, isLast ? 0: -6)
                         .padding(.top, isLast || !isTop ? -6: 0)
@@ -30,6 +30,13 @@ public struct ButtonsResultBuilder {
                 }
             }
         }
+    }
+}
+
+public struct DialogModifier: ViewModifier {
+    @Environment(\.colorScheme) var colorScheme
+    public func body(content: Content) -> some View {
+        return content.background(colorScheme == .dark ? Color(UIColor.systemGray6): Color.white)
     }
 }
 
