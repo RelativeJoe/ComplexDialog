@@ -32,21 +32,3 @@ public struct ButtonsResultBuilder {
         }
     }
 }
-
-public struct DialogModifier: ViewModifier {
-    @Environment(\.colorScheme) var colorScheme
-    public func body(content: Content) -> some View {
-        return content.background(colorScheme == .dark ? Color(UIColor.systemGray6): Color.white)
-    }
-}
-
-public extension View {
-    func dialogAction(_ action: @escaping () -> Void) -> DialogButton<Self> {
-        DialogButton(action: action, label: self)
-    }
-}
-
-public struct DialogButton<Content: View> {
-    public var action: () -> Void
-    public var label: Content
-}

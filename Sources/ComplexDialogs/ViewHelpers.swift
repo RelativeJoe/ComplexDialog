@@ -21,3 +21,9 @@ public extension View {
         }
     }
 }
+
+public extension View {
+    func dialogAction(_ action: @escaping () -> Void) -> DialogButton<Self> {
+        DialogButton(action: action, label: self)
+    }
+}
