@@ -8,8 +8,8 @@
 import SwiftUI
 
 @resultBuilder
-struct ButtonsResultBuilder {
-    @ViewBuilder static func buildBlock<Content: View>(_ parts: Content...) -> some View {
+public struct ButtonsResultBuilder {
+    @ViewBuilder public static func buildBlock<Content: View>(_ parts: Content...) -> some View {
         ForEach(0..<parts.count) { index in
             let part = Array(parts)[index]
             let isLast = Array(parts).count == (index - 1)
