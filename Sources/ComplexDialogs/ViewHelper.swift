@@ -8,7 +8,7 @@
 import SwiftUI
 
 public extension View {
-    @ViewBuilder func presentDialog(isPresented: Binding<Bool>, @ButtonsResultBuilder bodyContent: @escaping () -> some View, @ViewBuilder cancelContent: @escaping () -> some View) -> some View {
+    @ViewBuilder func presentDialog(isPresented: Binding<Bool>, @ButtonsResultBuilder bodyContent: @escaping () -> some View, @ButtonsResultBuilder cancelContent: @escaping () -> some View) -> some View {
         ZStack {
             self
             if isPresented.wrappedValue {
