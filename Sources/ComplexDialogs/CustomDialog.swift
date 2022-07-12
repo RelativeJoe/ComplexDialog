@@ -18,15 +18,14 @@ struct CustomDialog<Content: View, Cancel: View>: View {
             }.background(colorScheme == .light ? Color.white: Color(UIColor.systemGray6))
             .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
             .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 0)
-            Button(action: {
-                isPresented = false
-            }) {
-                cancelContent
-                    .padding(17)
-                    .background(colorScheme == .light ? Color.white: Color(UIColor.systemGray6))
-                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                    .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 0)
-            }
+            cancelContent
+                .padding(17)
+                .background(colorScheme == .light ? Color.white: Color(UIColor.systemGray6))
+                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 0)
+                .onTapGesture {
+                    isPresented.toggle()
+                }
         }.padding(8)
         .transition(.move(edge: .bottom))
         .animation(Animation.easeInOut(duration: 0.5), value: isPresented)
