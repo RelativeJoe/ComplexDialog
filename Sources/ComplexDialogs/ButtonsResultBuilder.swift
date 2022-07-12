@@ -19,7 +19,7 @@ public struct ButtonsResultBuilder {
                     .padding(17)
                     .padding(.bottom, isLast ? 0: -6)
                     .padding(.top, isLast || !isTop ? -6: 0)
-                if !isLast {
+                if !isLast && parts.count > 1 {
                     Divider()
                 }
             }
