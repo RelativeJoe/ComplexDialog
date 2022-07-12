@@ -15,16 +15,20 @@ struct CustomDialog<Content: View, Cancel: View>: View {
             Spacer()
             VStack {
                 bodyContent
+                    .simultaneousGesture(LongPressGesture(minimumDuration: 1).onEnded { _ in
+                        isPresented.toggle()
+                    })
             }.background(colorScheme == .light ? Color.white: Color(UIColor.systemGray6))
             .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
             .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 0)
             cancelContent
                 .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 0)
-                .onTapGesture {
+                .simultaneousGesture(LongPressGesture(minimumDuration: 1).onEnded { _ in
                     isPresented.toggle()
-                }
+                })
         }.padding(8)
         .transition(.move(edge: .bottom))
         .animation(Animation.easeInOut(duration: 0.5), value: isPresented)
+        .animation(Animation.easeInOut(duration: 0.5), value: !isPresented)
     }
 }

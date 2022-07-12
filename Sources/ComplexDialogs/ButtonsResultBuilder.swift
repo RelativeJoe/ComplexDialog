@@ -31,4 +31,10 @@ public struct ButtonsResultBuilder {
             }
         }
     }
+    static func buildEither<Content: View>(first component: DialogButton<Content>) -> DialogButton<Content> {
+        return component
+    }
+    static func buildEither<Content: View>(second component: DialogButton<Content>) -> DialogButton<Content> {
+        return component
+    }
 }
