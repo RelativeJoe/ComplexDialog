@@ -21,10 +21,10 @@ struct CustomDialog<Content: View, Cancel: View>: View {
             .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
             .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 0)
             cancelContent
-                .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 0)
+                .shadow(color: .black.opacity(0.1), radius: 8, x: 0, y: 0)
         }.padding(8)
         .transition(.move(edge: .bottom))
-        .animation(Animation.easeInOut(duration: 0.5))
+        .animation(Animation.easeInOut(duration: 0.2))
         .onAppear {
             NotificationCenter.onDismiss()
                 .sink { _ in
