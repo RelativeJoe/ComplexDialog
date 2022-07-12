@@ -15,15 +15,15 @@ public extension View {
                 Color.black
                     .opacity(0.25)
                     .edgesIgnoringSafeArea(.all)
-                    .animation(.easeInOut(duration: 0.3), value: isPresented.wrappedValue)
+                    .animation(.easeInOut(duration: 0.3))
                 CustomDialog(isPresented: isPresented, bodyContent: bodyContent, cancelContent: cancelContent)
             }
         }
     }
-}
-
-public extension View {
     func dialogAction(_ action: @escaping () -> Void) -> DialogButton<Self> {
-        DialogButton(action: action, label: self)
+        DialogButton(action: {
+            action()
+            NotificationCenter.dismissDialog()
+        }, label: self)
     }
 }
