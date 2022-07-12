@@ -28,7 +28,7 @@ struct CustomDialog<Content: View, Cancel: View>: View {
         .onAppear {
             NotificationCenter.onDismiss()
                 .sink { _ in
-                    isPresented.toggle()
+                    isPresented = false
                 }.store(in: &cancellables)
         }
 //        .animation(Animation.easeInOut(duration: 0.5), value: !isPresented)
