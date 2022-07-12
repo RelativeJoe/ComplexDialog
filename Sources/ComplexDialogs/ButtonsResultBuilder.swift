@@ -12,8 +12,8 @@ public struct ButtonsResultBuilder {
     @ViewBuilder public static func buildBlock<Content: View>(_ parts: Content...) -> some View {
         ForEach(0..<parts.count) { index in
             let part = Array(parts)[index]
-            let isLast = Array(parts).count == (index - 1)
-            let isTop = index == 0
+            let isLast = Array(parts).count == (index - 1) && parts.count > 1
+            let isTop = index == 0  && parts.count > 1
             VStack {
                 part
                     .padding(17)
